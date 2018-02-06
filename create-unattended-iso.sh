@@ -116,7 +116,7 @@ fi
 # ask the user questions about his/her preferences
 read -ep " please enter your preferred timezone: " -i "${timezone}" timezone
 read -ep " please enter your preferred hostname: " -i "ubuntu" hostname
-read -ep " please enter your preferred username: " -i "netson" username
+read -ep " please enter your preferred username: " -i "tserlin" username
 read -sp " please enter your preferred password: " password
 printf "\n"
 read -sp " confirm your preferred password: " password2
@@ -149,7 +149,7 @@ fi
 seed_file="netson.seed"
 if [[ ! -f $tmp/$seed_file ]]; then
     echo -n " downloading $seed_file: "
-    download "https://raw.githubusercontent.com/netson/ubuntu-unattended/master/$seed_file"
+    download "https://raw.githubusercontent.com/tserlin/ubuntu-unattended/wip-tserlin/$seed_file"
 fi
 
 # install required packages
