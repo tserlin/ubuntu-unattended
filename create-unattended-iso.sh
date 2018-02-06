@@ -115,6 +115,7 @@ fi
 
 # ask the user questions about his/her preferences
 read -ep " please enter your preferred timezone: " -i "${timezone}" timezone
+read -ep " please enter your preferred hostname: " -i "ubuntu" hostname
 read -ep " please enter your preferred username: " -i "netson" username
 read -sp " please enter your preferred password: " password
 printf "\n"
@@ -204,10 +205,12 @@ sed -i -r 's/timeout\s+[0-9]+/timeout 1/g' $tmp/iso_new/isolinux/isolinux.cfg
 
 if [ $ub1604 == "yes" ]; then
    late_command="apt-install wget; in-target wget --no-check-certificate -O /home/$username/start.sh https://github.com/netson/ubuntu-unattended/raw/master/start.sh ;\
-     in-target chmod +x /home/$username/start.sh ;"
+     in-target chmod +x /home/$username/start.sh ;\
+     in-target update-grub ;"
 else 
    late_command="chroot /target wget -O /home/$username/start.sh https://github.com/netson/ubuntu-unattended/raw/master/start.sh ;\
-     chroot /target chmod +x /home/$username/start.sh ;"
+     chroot /target chmod +x /home/$username/start.sh ;\
+     update-grub ;"
 fi
 
 
